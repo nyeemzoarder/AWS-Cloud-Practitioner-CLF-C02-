@@ -1,0 +1,53 @@
+ebs mount to ec2 instance
+========================================================================
+1)  To check the list block devices in your ec2 instance >>
+	      lsblk
+
+2)  To check any file system is available in your block device >>
+	      sudo file -s /dev/xvdf
+
+3)  To see what are the file system are available in system wide to use >>
+	      sudo mkfs.
+
+4)  Make a file system in your block device >>
+	      sudo mkfs.ext4 /dev/xvdf
+
+5)  Create a directory which you like to mount for your block storage
+	      sudo mkdir /ebsdemo
+
+6)  Mount the block storage with the directory
+	      sudo mount /dev/xvdf /ebsdemo/
+
+7)  Check the block storage
+	      sudo blkid
+
+8)  Go to the mounted directory and create a file 
+	      cd /ebsdemo/
+	      sudo nano examplefile.txt
+
+Now detach the ebs volume from the ec2 instance and attached with the another
+ec2 instance to check the file which you have created earlier that is exist there -
+====================================================================================
+1)  Check the block storage >>
+	      sudo lsblk
+
+2)  Check whether file system is there >>
+	      sudo file -s /dev/xvdf
+
+3)  Create a directory to mount the block storage >>
+	      sudo mkdir /ubuntu-docker2-ebs-vol
+
+4)  Check the directory existance >>
+        ls /
+
+5)  Mount the directory with the block storage >>
+	      sudo mount /dev/xvdf /ubuntu-docker2-ebs-vol/
+
+6)  Check the listed files in the directory >>
+        ls /ubuntu-docker2-ebs-vol/
+   
+7)  Read the file to make sure all the information is there >>
+	      cat /ubuntu-docker2-ebs-vol/examplefile.txt 
+
+
+  
